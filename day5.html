@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+          <!-- <link href="./CustomStyles.css" rel="stylesheet" /> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+   <link href="CustomStyles.css" rel="stylesheet"/>
+</style>
+   
+    <script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("t1").value;
+        var confirmPassword = document.getElementById("t2").value;
+        if (password != confirmPassword) {
+            alert("Password and confirm password do not match.");
+            return false;
+        }
+        alert("password and confirmPassword are matched");
+        return true;
+    }
+
+
+type =['graduation','post graduation'];
+
+data=[['cse','ece','eee'],['hepatology','immunology'] ];
+
+
+function fillDD()
+{
+var Typedd =document.getElementById('type');
+for(i=0;i<type.length;i++)
+{
+var ele= document.createElement('option');
+ele.text=type[i];
+Typedd.add(ele,i+1);
+
+}
+}
+
+
+function fillData()
+{
+
+var Typedd =document.getElementById('type');
+var selectedIdx= Typedd.selectedIndex;
+
+var Datadd =document.getElementById('data');
+
+Datadd.innerText=null;
+
+
+for(i=0;i<data[selectedIdx-1].length;i++)
+{
+var ele=document.createElement('option');
+
+ele.text=data[selectedIdx-1][i];
+
+Datadd.add(ele,i+1);
+
+
+}
+
+}
+function dobValidate() {
+
+var date= new Date();
+
+var year=date.getFullYear();
+var month=date.getMonth()+1;
+var dd=date.getDate();
+
+if(month<10)
+{
+month='0'+month;
+}
+if(dd<10)
+{
+dd=0+""+dd;
+}
+document.getElementById('dob').max=(year-18)+"-"+month+"-"+dd;
+
+
+
+}
+</script>
+
+</head>
+<body>
+    
+    <form align="center">
+ <fieldset>
+  <legend>EMPLOYEE REGISTRATION</legend>
+  <input type="text" placeholder="enter employee id"><br><br>
+  <input type="password" id="t1" placeholder="enter password"><br><br>
+  <input type="password" id="t2" placeholder="confirm password"><br><br>
+  <input type="submit" id="t3" value="register" onclick="Validate()"><br><br>
+  <body onload="fillDD()">
+
+<select id="type" onchange="fillData()">
+<option>SELECT Course</option>
+</select>
+
+
+<select id="data" >
+<option>SELECT Branch</option><br><br>
+</select>
+
+</body>
+<br>
+<br>
+<input type="date" id="dob"  onclick="dobValidate()">
+
+  
+
+
+ </fieldset>
+</form>
+
+</body>
+
+</html>
