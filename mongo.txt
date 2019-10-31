@@ -1,0 +1,105 @@
+Mongo===
+
+show db
+db- current db
+
+
+db.doctors.insert([
+{
+"name":"dean",
+"born":"2010",
+"speciality":"ortho"
+},{
+"name":"bean",
+"born":"2003",
+"speciality":"ortho",
+"phone":["998877","221144"]
+}
+]
+)
+
+db.doctors.update(
+{ name:"bean"} ,
+ {$push:{phone:"124563"}}
+)
+
+
+db.doctors.update(
+{name:"dean", } ,
+ {$set:{name:"Mr dean"}},
+{multi:true}
+)
+
+
+https://colorlib.com/wp/cat/restaurant/
+===========================================================================================
+
+
+db.player.insert(
+{
+"name":"john",
+"dob":new Date("1997-07-10"),
+"address":{"city":"bangalore","state":"kar"}
+}
+)
+
+db.studs.find({"sname":"db.studs.aggregate(
+{
+$group : { _id : "rno",
+highest:{$max:"$marks"}
+}
+})"}).pretty()
+
+
+db.studs.aggregate(
+{
+$group : { _id : "$gender",
+highest:{$max:"$marks"},
+$match:{"marks":"highest"}
+}
+});
+
+db.studs.find("marks":90),{_id:0,sname:1}
+
+db.studs.find.aggregate($group : { _id : "rno"},
+highest:{$max:"$marks"}),{_id:0,sname:1}
+
+
+db.studs.aggregate(
+{
+$group : { _id : "rno"},
+highest:{$max:"$marks"},
+sname:{db.studs.find("marks":{$max:"$marks"}),{_id:0,sname:1}}
+}
+});
+
+
+db.studs.aggregate(
+{
+$group : { _id : "$sem",
+highest:{$max:"$marks"}
+},
+$match: { "highest": { $gt: 80}}
+});
+
+
+
+db.studs.aggregate(
+[
+{
+$group :
+{
+_id : "$sem",
+highest:{$max:"$marks"}
+}
+},
+{
+$match: { "highest": { $gte: 80},"_id":{$gt:3}}
+}
+
+]
+);
+==============================================================================================
+
+
+mongo backup
